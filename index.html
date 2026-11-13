@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LaunchProof — Test your product idea before you order stock</title>
+  <meta name="description" content="LaunchProof helps UK physical-product founders investigate demand, compare supplier costs and test how customers respond to a stated price.">
+  <link rel="icon" href="data:,">
+  
+  <!-- Typography: Google Fonts DM Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+  <!-- =======================================================================
+       SITE HEADER & PRIMARY NAVIGATION
+       ======================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <a href="#home" class="brand-wordmark" aria-label="LaunchProof homepage">
+        LaunchProof<span class="brand-dot" aria-hidden="true">.</span>
+      </a>
+
+      <!-- Primary Navigation (Desktop & Mobile Drawer) -->
+      <nav id="primary-navigation" class="primary-navigation" aria-label="Main Navigation">
+        <ul class="nav-list" role="list">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#platform" class="nav-link">Platform</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+        <div class="header-actions">
+          <button type="button" class="btn btn-primary" data-pilot-trigger>Request a Pilot</button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        type="button" 
+        id="mobile-menu-toggle" 
+        class="mobile-menu-toggle" 
+        aria-expanded="false" 
+        aria-controls="primary-navigation" 
+        aria-label="Toggle navigation menu"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+
+    <!-- =======================================================================
+         1. HOME SECTION
+         ======================================================================= -->
+    <section id="home" class="section section-home" aria-labelledby="home-heading">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Copy -->
+          <div class="hero-content">
+            <span class="hero-badge">Evidence-Led Pre-Launch Validation</span>
+            <h1 id="home-heading" class="hero-title">Test your product idea before you order stock.</h1>
+            <p class="hero-copy">
+              Will customers pay a price that leaves you a margin? LaunchProof helps UK physical-product founders investigate demand, compare supplier costs and test how customers respond to a stated price. Use the evidence to decide whether to place your first stock order.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn btn-primary" data-pilot-trigger>Request a Pilot</button>
+              <a href="#how-it-works" class="btn-link">See How It Works <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          </div>
+
+          <!-- Decision Room Preview -->
+          <div class="hero-preview">
+            <div class="decision-room-card" role="region" aria-label="Decision Room preview card">
+              <div class="decision-room-header">
+                <div class="decision-room-title">
+                  <span aria-hidden="true">📋</span>
+                  <span>Decision Room</span>
+                </div>
+                <span class="example-badge">Illustrative example</span>
+              </div>
+              
+              <div class="decision-room-body">
+                <div class="brief-item">
+                  <span class="brief-label">Customer response</span>
+                  <span class="brief-value">Visitors joined the waitlist at the advertised price.</span>
+                </div>
+                
+                <div class="brief-item">
+                  <span class="brief-label">Supplier terms</span>
+                  <span class="brief-value">The minimum order exceeds projected 90-day demand.</span>
+                </div>
+                
+                <div class="brief-item">
+                  <div class="recommendation-box">
+                    <span class="recommendation-label">Recommendation</span>
+                    <span class="recommendation-tag">Revise</span>
+                  </div>
+                </div>
+
+                <div class="brief-item">
+                  <span class="brief-label">Next step</span>
+                  <span class="brief-value">Compare suppliers with a smaller minimum order before committing to stock.</span>
+                </div>
+              </div>
+
+              <div class="decision-room-footer">
+                Decision rule applied: Pre-agreed MOQ threshold prioritises capital preservation over speculative inventory.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         2. ABOUT SECTION
+         ======================================================================= -->
+    <section id="about" class="section section-about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">About LaunchProof</span>
+          <h2 id="about-heading" class="section-title">Built for the decision behind your first stock order</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-main">
+            <p class="about-text">
+              A product can attract clicks and encouraging feedback while remaining too expensive to source, fulfil or advertise. LaunchProof is designed to bring customer evidence, pricing, supplier terms and acquisition costs into one Go, Revise or Stop recommendation. The founder makes the final decision.
+            </p>
+
+            <div class="customer-groups-block">
+              <h3>Intended Customers</h3>
+              <ul class="feature-list" role="list">
+                <li>First-time physical-product founders.</li>
+                <li>Small and medium-sized ecommerce and direct-to-consumer brands testing a new line.</li>
+                <li>Agencies, product developers and incubators supporting founders.</li>
+              </ul>
+            </div>
+
+            <div class="categories-block">
+              <h3>Initial UK Focus Categories</h3>
+              <div class="category-pill-group">
+                <span class="category-pill">Health and wellness consumables</span>
+                <span class="category-pill">Pet products</span>
+                <span class="category-pill">Home and kitchen goods</span>
+                <span class="category-pill">Personal accessories</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compact Founder Profile -->
+          <aside class="about-sidebar" aria-label="Founder Profile">
+            <div class="founder-card">
+              <div class="founder-card-header">
+                <h3 class="founder-name">Sharique Shahid</h3>
+                <p class="founder-title">Founder and Managing Director</p>
+              </div>
+              <p class="founder-bio">
+                Sharique holds an MBA in Marketing, a B.Com in Commerce and an MSc in International Business from the University of Stirling. His background includes two years and three months in manufacturing-sector marketing and research into online grocery purchasing behaviour. He leads product direction, the evidence standard, customer discovery, partnerships and go-to-market work.
+              </p>
+              <div class="founder-meta">
+                Leadership focus: Evidence integrity &bull; Supplier viability &bull; Founder capital protection
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         3. PLATFORM SECTION
+         ======================================================================= -->
+    <section id="platform" class="section section-platform" aria-labelledby="platform-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">The Platform</span>
+          <h2 id="platform-heading" class="section-title">From a product idea to an order decision</h2>
+          <p class="section-intro">
+            A structured suite of analytical tools engineered to evaluate commercial viability before capital is committed to physical stock.
+          </p>
+        </div>
+
+        <div class="platform-note">
+          <strong>Architecture Note:</strong> Modules 1–8 form the core MVP. Outcome Loop begins with opt-in Shopify outcome tracking.
+        </div>
+
+        <div class="modules-grid">
+          <!-- Module 1 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 01</span>
+            <h3 class="module-title">Idea Studio</h3>
+            <p class="module-desc">
+              Captures the concept, target customer, budget and risk appetite. Turns the founder’s assumptions into questions that can be tested.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 2 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 02</span>
+            <h3 class="module-title">Market Radar</h3>
+            <p class="module-desc">
+              Shows demand trends and seasonality, with sources so founders can trace the figures.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 3 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 03</span>
+            <h3 class="module-title">Voice of Customer</h3>
+            <p class="module-desc">
+              Groups recurring complaints and requests from competitor reviews. Links each theme to customer quotes that can inform a product improvement.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 4 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 04</span>
+            <h3 class="module-title">Price and Position Lab</h3>
+            <p class="module-desc">
+              Compares competitor prices, pack sizes and product claims. The Price-to-Margin Corridor identifies a range where customers may accept the price and the product can still earn a contribution margin. Live test results refine the range.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 5 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 05</span>
+            <h3 class="module-title">Compliance Pre-Screen</h3>
+            <p class="module-desc">
+              Flags likely UK category requirements, indicative costs and lead times. Its Claim Safety Check screens proposed advertising and product-page claims. Preliminary guidance only; does not imply certification or approval.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 6 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 06</span>
+            <h3 class="module-title">Supplier Match</h3>
+            <p class="module-desc">
+              Compares supplier fit, landed cost, lead time and minimum order quantity. Explains the MOQ Risk Ratio in plain language: how the supplier’s minimum order compares with projected demand over 90 days.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 7 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 07</span>
+            <h3 class="module-title">Test Launcher</h3>
+            <p class="module-desc">
+              Supports transparent pre-launch tests through the founder’s own advertising account. Visitors see the price before joining a waitlist or placing an optional refundable deposit. Meta Ads is planned first, followed by Google.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 8 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 08</span>
+            <h3 class="module-title">Decision Room</h3>
+            <p class="module-desc">
+              Applies decision rules agreed before the test. Shows the Validation Evidence Score as a range, explains the Go, Revise or Stop recommendation and produces a Signed Evidence Pack and staged spending plan.
+            </p>
+            <span class="module-tag">Core MVP</span>
+          </article>
+
+          <!-- Module 9 -->
+          <article class="module-card">
+            <span class="module-index">MODULE 09</span>
+            <h3 class="module-title">Outcome Loop</h3>
+            <p class="module-desc">
+              With permission, compares predictions with actual sales, conversion and returns at 30, 90 and 180 days. Shopify comes first in the roadmap, with Amazon planned later.
+            </p>
+            <span class="module-tag">Roadmap Extension</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         4. HOW IT WORKS SECTION
+         ======================================================================= -->
+    <section id="how-it-works" class="section section-workflow" aria-labelledby="workflow-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Methodology & Schedule</span>
+          <h2 id="workflow-heading" class="section-title">How a LaunchProof validation works</h2>
+          <p class="section-intro">
+            A disciplined five-stage validation process. Timings reflect the planned pilot schedule.
+          </p>
+        </div>
+
+        <div class="workflow-container">
+          <!-- Stage 1 -->
+          <div class="workflow-stage">
+            <div class="stage-timing">
+              <span class="stage-timing-days">Days 0–2</span>
+              <span class="stage-timing-label">Pilot Schedule</span>
+            </div>
+            <div class="stage-content">
+              <h3 class="stage-title">Define the idea and investigate demand</h3>
+              <p class="stage-desc">
+                Capture the audience, budget and risk appetite. Identify assumptions, research demand and review recurring customer complaints.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="workflow-stage">
+            <div class="stage-timing">
+              <span class="stage-timing-days">Days 2–4</span>
+              <span class="stage-timing-label">Pilot Schedule</span>
+            </div>
+            <div class="stage-content">
+              <h3 class="stage-title">Check the product economics</h3>
+              <p class="stage-desc">
+                Screen category requirements, compare competitor prices and supplier terms, and calculate landed cost. Advance to a live test only if there is a viable price range.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="workflow-stage">
+            <div class="stage-timing">
+              <span class="stage-timing-days">Days 4–5</span>
+              <span class="stage-timing-label">Pilot Schedule</span>
+            </div>
+            <div class="stage-content">
+              <h3 class="stage-title">Approve the concept and lock the rules</h3>
+              <p class="stage-desc">
+                The founder approves the specification and price range. Check proposed claims, prepare test pages and agree the Go, Revise and Stop thresholds before advertising spend begins.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="workflow-stage">
+            <div class="stage-timing">
+              <span class="stage-timing-days">Days 5–12</span>
+              <span class="stage-timing-label">Pilot Schedule</span>
+            </div>
+            <div class="stage-content">
+              <h3 class="stage-title">Test demand at a stated price</h3>
+              <p class="stage-desc">
+                Explain to visitors that the product is in development. Compare price-visible waitlist responses and optional refundable deposits within the founder’s approved advertising budget.
+              </p>
+            </div>
+          </div>
+
+          <!-- Stage 5 -->
+          <div class="workflow-stage">
+            <div class="stage-timing">
+              <span class="stage-timing-days">Days 12–14</span>
+              <span class="stage-timing-label">Pilot Schedule</span>
+            </div>
+            <div class="stage-content">
+              <h3 class="stage-title">Review the evidence and decide</h3>
+              <p class="stage-desc">
+                Review acquisition cost, the score range and supplier order risk. Go leads to a supplier brief and staged spending plan. Revise identifies what to change and retest. Stop explains why the evidence does not support committing to the order.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pilot Target Statement (displayed once) -->
+        <div class="pilot-target-callout" role="note">
+          <p class="pilot-target-text">
+            Pilot target: reach a decision within 14 days for under £500 all-in, including the advertising test.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         5. MARKET PRICING SECTION
+         ======================================================================= -->
+    <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Investment & Plans</span>
+          <h2 id="pricing-heading" class="section-title">Pricing</h2>
+          <p class="section-intro">
+            Start with research, run a live demand test or validate a single product idea.
+          </p>
+        </div>
+
+        <p class="pricing-vat-notice">Prices exclude VAT</p>
+
+        <!-- Four Comparable Pricing Cards -->
+        <div class="pricing-grid">
+          
+          <!-- Card 1: Free Discovery -->
+          <div class="pricing-card">
+            <h3 class="pricing-plan-name">FREE DISCOVERY</h3>
+            <div class="pricing-price-wrap">
+              <span class="pricing-amount">£0</span>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>One idea per month</li>
+              <li>Basic Market Radar</li>
+              <li>Competitor price map</li>
+              <li>Top three customer complaint themes</li>
+              <li>Initial compliance category flag</li>
+            </ul>
+            <button type="button" class="btn btn-outline" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+          <!-- Card 2: Starter -->
+          <div class="pricing-card">
+            <span class="card-badge">Covers research</span>
+            <h3 class="pricing-plan-name">STARTER</h3>
+            <div class="pricing-price-wrap">
+              <span class="pricing-amount">£39</span>
+              <span class="pricing-unit">/month</span>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Five ideas per month</li>
+              <li>Full research modules</li>
+              <li>Unique selling proposition generator</li>
+              <li>Compliance checklist</li>
+              <li>Five-supplier comparison</li>
+              <li>Research-only score</li>
+            </ul>
+            <button type="button" class="btn btn-outline" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+          <!-- Card 3: Growth -->
+          <div class="pricing-card pricing-card--highlight">
+            <span class="card-badge">Includes live tests</span>
+            <h3 class="pricing-plan-name">GROWTH</h3>
+            <div class="pricing-price-wrap">
+              <span class="pricing-amount">£119</span>
+              <span class="pricing-unit">/month</span>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Everything in Starter</li>
+              <li>Two live tests per month</li>
+              <li>Price-to-Margin Corridor</li>
+              <li>Claim Safety Check</li>
+              <li>Full Decision Room</li>
+              <li>Signed Evidence Pack</li>
+              <li>Outcome Loop</li>
+            </ul>
+            <button type="button" class="btn btn-primary" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+          <!-- Card 4: Enterprise -->
+          <div class="pricing-card">
+            <h3 class="pricing-plan-name">ENTERPRISE</h3>
+            <div class="pricing-price-wrap">
+              <span class="pricing-amount">£349</span>
+              <span class="pricing-unit">/month</span>
+            </div>
+            <ul class="pricing-features" role="list">
+              <li>Five seats</li>
+              <li>Ten tests per month</li>
+              <li>Multi-client workspace</li>
+              <li>White-label reports</li>
+              <li>API access</li>
+              <li>Priority support</li>
+            </ul>
+            <button type="button" class="btn btn-outline" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+        </div>
+
+        <!-- Distinct One-off Options -->
+        <h3 class="one-off-section-title">One-Off Validation Options</h3>
+        <div class="one-off-grid">
+          
+          <div class="one-off-card">
+            <div class="one-off-info">
+              <h4>VALIDATION SPRINT</h4>
+              <div class="one-off-price">£149 <span class="one-off-unit">per sprint</span></div>
+              <p class="one-off-desc">One full validation without a subscription.</p>
+            </div>
+            <button type="button" class="btn btn-outline" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+          <div class="one-off-card">
+            <div class="one-off-info">
+              <h4>EXPERT REVIEW</h4>
+              <div class="one-off-price">£450 <span class="one-off-unit">per review</span></div>
+              <p class="one-off-desc">A product and sourcing specialist reviews the evidence pack.</p>
+            </div>
+            <button type="button" class="btn btn-outline" data-pilot-trigger>Request a Pilot</button>
+          </div>
+
+        </div>
+
+        <!-- Advertising Note -->
+        <p class="pricing-ad-note">
+          Advertising spend is paid directly to the advertising platform through the founder’s own account. LaunchProof adds no markup.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         6. FAQ SECTION
+         ======================================================================= -->
+    <section id="faq" class="section section-faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Common Questions</span>
+          <h2 id="faq-heading" class="section-title">Frequently Asked Questions</h2>
+          <p class="section-intro">
+            Clarity on our evidence methodology, test mechanics, and pilot expectations.
+          </p>
+        </div>
+
+        <div class="faq-container">
+          <!-- FAQ 1 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>What can I learn for free?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Free Discovery covers one idea per month, with basic Market Radar, a competitor price map, the top three complaint themes and an initial compliance category flag.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 2 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>What counts as evidence that customers will buy?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>LaunchProof gives greater weight to actions taken after a visitor sees the price. An optional refundable deposit is a stronger signal than a positive comment. The score is shown as a range to reflect uncertainty. Modelled evidence alone cannot trigger a Go recommendation.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 3 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Why might a promising idea receive a Revise recommendation?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Customers may respond well to the advertised price while acquisition costs or a supplier’s minimum order make the first batch uneconomic. Revise identifies a specific change to test, such as a smaller pack size or a different supplier.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 4 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Who pays for advertising and handles deposits?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>The founder pays the advertising platform directly. Optional refundable deposits go through the founder’s own payment account. LaunchProof does not hold the advertising budget or customer deposits.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 5 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Does the compliance pre-screen certify my product?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>No. It flags likely requirements, indicative costs and lead times, and points founders towards relevant guidance, advisers or test houses. Categories with heavy pre-market requirements, such as medical devices, can be flagged but are outside active launch support.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 6 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>What do I receive after a full validation?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>A Go, Revise or Stop recommendation with reasons, a Validation Evidence Score range and a Signed Evidence Pack. Where the evidence supports proceeding, the handoff includes a supplier brief and a Capital-at-Risk Ladder showing when to commit the next portion of the budget.</p>
+            </div>
+          </details>
+
+          <!-- FAQ 7 -->
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span>Can I validate one idea without a subscription?</span>
+              <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </summary>
+            <div class="faq-answer">
+              <p>Yes. The planned Validation Sprint is £149 per sprint, excluding VAT. Expert Review is a separate £450 per review, excluding VAT.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       7. FOOTER SECTION
+       ======================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="footer-wordmark">LaunchProof</span>
+          <p class="footer-tagline">
+            Helping UK founders test demand, understand margins and decide whether to order stock.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Navigation</span>
+            <a href="#home" class="footer-nav-link">Home</a>
+            <a href="#about" class="footer-nav-link">About</a>
+            <a href="#platform" class="footer-nav-link">Platform</a>
+            <a href="#how-it-works" class="footer-nav-link">How It Works</a>
+            <a href="#pricing" class="footer-nav-link">Pricing</a>
+            <a href="#faq" class="footer-nav-link">FAQ</a>
+          </div>
+        </nav>
+
+        <div class="footer-actions">
+          <button type="button" class="btn btn-primary" data-pilot-trigger>Request a Pilot</button>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-founder">Founded by Sharique Shahid</p>
+        <p class="footer-copy">&copy; 2026 LaunchProof. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =======================================================================
+       REQUEST A PILOT — ACCESSIBLE FRONTEND FORM DIALOG
+       ======================================================================= -->
+  <dialog id="pilot-dialog" class="pilot-dialog" aria-labelledby="dialog-title" aria-modal="true">
+    <div class="dialog-card">
+      <div class="dialog-header">
+        <h2 id="dialog-title" class="dialog-title">Request a Pilot</h2>
+        <button type="button" id="close-dialog-btn" class="dialog-close-btn" aria-label="Close dialog">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="dialog-body">
+        <form id="pilot-form" novalidate>
+          
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="fullName" class="form-label">
+              Full Name <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              autocomplete="name" 
+              required 
+              class="form-input"
+              placeholder="e.g. Eleanor Vance"
+            >
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phoneNumber" class="form-label">
+              Phone Number <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="tel" 
+              id="phoneNumber" 
+              name="phoneNumber" 
+              autocomplete="tel" 
+              required 
+              class="form-input"
+              placeholder="e.g. +44 7700 900077"
+            >
+          </div>
+
+          <!-- Email Address -->
+          <div class="form-group">
+            <label for="emailAddress" class="form-label">
+              Email Address <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="emailAddress" 
+              name="emailAddress" 
+              autocomplete="email" 
+              required 
+              class="form-input"
+              placeholder="e.g. eleanor@example.co.uk"
+            >
+          </div>
+
+          <!-- Organisation Name -->
+          <div class="form-group">
+            <label for="organisationName" class="form-label">
+              Organisation Name <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="organisationName" 
+              name="organisationName" 
+              autocomplete="organization" 
+              required 
+              class="form-input"
+              placeholder="e.g. Highlands Botanicals Ltd"
+            >
+          </div>
+
+          <!-- Local Storage Disclaimer -->
+          <p class="form-disclaimer">
+            This form saves your details in this browser on this device. Your request is not sent to LaunchProof.
+          </p>
+
+          <!-- Accessible Live Status Region -->
+          <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
+
+          <div class="dialog-actions">
+            <button type="submit" id="save-pilot-btn" class="btn btn-primary">
+              Save pilot request
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Interaction Script -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
