@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Request a Pilot | LaunchProof</title>
+  <meta name="description" content="Register interest in the LaunchProof UK pre-launch validation pilot. Test your product idea and customer demand before committing capital to inventory.">
+  <link rel="icon" href="data:,">
+  
+  <!-- Typography: Google Fonts DM Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400;1,9..40,600&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+
+  <!-- =======================================================================
+       SITE HEADER & PRIMARY NAVIGATION (SHARED)
+       ======================================================================= -->
+  <header class="site-header" role="banner">
+    <div class="container header-container">
+      <a href="/" class="brand-wordmark" aria-label="LaunchProof homepage">
+        LaunchProof<span class="brand-dot" aria-hidden="true">.</span>
+      </a>
+
+      <!-- Primary Navigation (Exactly 4 Links in Required Order) -->
+      <nav id="primary-navigation" class="primary-navigation" aria-label="Main Navigation">
+        <ul class="nav-list" role="list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/service" class="nav-link">Service</a></li>
+          <li><a href="/contact-us" class="nav-link nav-link--active" aria-current="page">Contact Us</a></li>
+          <li><a href="/about-us" class="nav-link">About Us</a></li>
+        </ul>
+        <div class="header-actions">
+          <a href="/contact-us#pilot-form" class="btn btn-primary">Request a Pilot</a>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button 
+        type="button" 
+        id="mobile-menu-toggle" 
+        class="mobile-menu-toggle" 
+        aria-expanded="false" 
+        aria-controls="primary-navigation" 
+        aria-label="Toggle navigation menu"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" role="main">
+
+    <!-- =======================================================================
+         CONTACT US SECTION (MAIN PAGE CONTENT)
+         ======================================================================= -->
+    <section class="section section-contact">
+      <!-- Very subtle background gradient -->
+      <div class="contact-bg-anim" aria-hidden="true">
+        <div class="contact-subtle-glow"></div>
+      </div>
+
+      <div class="container">
+        
+        <div class="section-header" data-reveal>
+          <span class="section-eyebrow">Pilot Registration</span>
+          <h1 class="section-title">Contact Us</h1>
+          <p class="section-intro">
+            Register your interest in the LaunchProof pre-launch validation pilot. Test your product idea, understand unit margins and evaluate supplier terms before placing your first production order.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          
+          <!-- Primary Form Container on Solid Surface -->
+          <div class="contact-form-card" data-reveal>
+            <div class="form-card-header">
+              <h2 class="form-card-title">Request a Pilot</h2>
+              <p class="form-card-intro">Complete your details to register interest for an upcoming validation sprint.</p>
+            </div>
+
+            <form id="pilot-form" novalidate>
+              
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="fullName" class="form-label">
+                  Full Name <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  autocomplete="name" 
+                  required 
+                  class="form-input"
+                  placeholder="e.g. Eleanor Vance"
+                >
+              </div>
+
+              <!-- Phone Number -->
+              <div class="form-group">
+                <label for="phoneNumber" class="form-label">
+                  Phone Number <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="tel" 
+                  id="phoneNumber" 
+                  name="phoneNumber" 
+                  autocomplete="tel" 
+                  required 
+                  class="form-input"
+                  placeholder="e.g. +44 7700 900077"
+                >
+              </div>
+
+              <!-- Email Address -->
+              <div class="form-group">
+                <label for="emailAddress" class="form-label">
+                  Email Address <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  id="emailAddress" 
+                  name="emailAddress" 
+                  autocomplete="email" 
+                  required 
+                  class="form-input"
+                  placeholder="e.g. eleanor@example.co.uk"
+                >
+              </div>
+
+              <!-- Organisation Name -->
+              <div class="form-group">
+                <label for="organisationName" class="form-label">
+                  Organisation Name <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input 
+                  type="text" 
+                  id="organisationName" 
+                  name="organisationName" 
+                  autocomplete="organization" 
+                  required 
+                  class="form-input"
+                  placeholder="e.g. Highlands Botanicals Ltd"
+                >
+              </div>
+
+              <!-- Accessible Live Status Region -->
+              <div id="form-status" role="status" aria-live="polite" class="form-status"></div>
+
+              <div class="form-actions">
+                <button type="submit" id="save-pilot-btn" class="btn btn-primary">
+                  Save pilot request
+                </button>
+              </div>
+
+            </form>
+          </div>
+
+          <!-- Pilot Scope & Information Card (Genuine Details Only) -->
+          <aside class="contact-info-card" data-reveal>
+            <h3 class="contact-info-title">What to expect from the pilot</h3>
+            
+            <ul class="pilot-info-list" role="list">
+              <li class="pilot-info-item">
+                <div class="pilot-info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <strong>14-day turnaround target</strong>
+                  <p>Disciplined schedule designed to reach a confident commercial decision within two weeks.</p>
+                </div>
+              </li>
+
+              <li class="pilot-info-item">
+                <div class="pilot-info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Zero markup on advertising spend</strong>
+                  <p>Ad spend is paid directly to advertising platforms through the founder’s own account.</p>
+                </div>
+              </li>
+
+              <li class="pilot-info-item">
+                <div class="pilot-info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Founder-directed evidence standard</strong>
+                  <p>All Go, Revise or Stop thresholds and decision rules are locked before testing begins.</p>
+                </div>
+              </li>
+
+              <li class="pilot-info-item">
+                <div class="pilot-info-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Client-side browser storage</strong>
+                  <p>Your details are stored strictly in this browser’s local storage on this device.</p>
+                </div>
+              </li>
+            </ul>
+
+            <div class="contact-info-footer">
+              <p>Explore the full 9-module analytical platform and pricing on our <a href="/service" class="btn-link">Service page</a>.</p>
+            </div>
+          </aside>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================================
+       SITE FOOTER (SHARED)
+       ======================================================================= -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <a href="/" class="brand-wordmark" aria-label="LaunchProof homepage">
+            LaunchProof<span class="brand-dot" aria-hidden="true">.</span>
+          </a>
+          <p class="footer-tagline">
+            Helping UK founders test demand, understand margins and decide whether to order stock.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer Navigation">
+          <div class="footer-col">
+            <span class="footer-heading">Navigation</span>
+            <ul class="footer-list" role="list">
+              <li><a href="/" class="footer-link">Home</a></li>
+              <li><a href="/service" class="footer-link">Service</a></li>
+              <li><a href="/contact-us" class="footer-link">Contact Us</a></li>
+              <li><a href="/about-us" class="footer-link">About Us</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <div class="footer-actions">
+          <a href="/contact-us#pilot-form" class="btn btn-primary">Request a Pilot</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-founder">Founded by Sharique Shahid</p>
+        <p class="footer-copy">&copy; 2026 LaunchProof. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interaction Script -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

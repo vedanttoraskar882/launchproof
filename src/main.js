@@ -1,9 +1,9 @@
 /**
  * LaunchProof — Client-side interaction script
- * Frontend-only UK landing page implementation
+ * Frontend-only UK multi-page implementation
  */
 
-const PILOT_STORAGE_KEY = "launchproof_pilot_requests";
+export const PILOT_STORAGE_KEY = "launchproof_pilot_requests";
 
 /**
  * Storage implementation strictly adhering to prompt specifications.
@@ -22,14 +22,20 @@ export async function savePilotRequest(form) {
     const value = String(data.get(field) ?? "").trim();
     if (!value) {
       const input = form.elements.namedItem(field);
-      input.setCustomValidity("Please complete this field.");
-      input.reportValidity();
+      if (input && typeof input.setCustomValidity === "function") {
+        input.setCustomValidity("Please complete this field.");
+        if (typeof input.reportValidity === "function") {
+          input.reportValidity();
+        }
+      }
       return false;
     }
     record[field] = value;
   }
 
-  if (!form.reportValidity()) return false;
+  if (typeof form.reportValidity === "function" && !form.reportValidity()) {
+    return false;
+  }
   record.submissionDateTime = new Date().toISOString();
 
   function appendRecord() {
@@ -57,118 +63,21 @@ export async function savePilotRequest(form) {
 }
 
 if (typeof document !== "undefined") {
-  document.addEventListener("DOMContentLoaded", () => {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      initApp();
+    });
+  } else {
     initApp();
-  });
+  }
 }
 
 export function initApp() {
-  // Dialog Elements
-  const dialog = document.getElementById("pilot-dialog");
+  // Pilot Request Form (Contact Us Page)
   const form = document.getElementById("pilot-form");
   const submitBtn = document.getElementById("save-pilot-btn");
   const statusRegion = document.getElementById("form-status");
-  const closeBtn = document.getElementById("close-dialog-btn");
 
-  let lastActiveElement = null;
-
-  // Open dialog handler for all "Request a Pilot" buttons
-  const pilotTriggers = document.querySelectorAll("[data-pilot-trigger]");
-
-  function openDialog(trigger) {
-    lastActiveElement = trigger || document.activeElement;
-    if (statusRegion) {
-      statusRegion.textContent = "";
-      statusRegion.className = "form-status";
-    }
-
-    if (dialog && typeof dialog.showModal === "function") {
-      dialog.showModal();
-    } else if (dialog) {
-      dialog.setAttribute("open", "");
-    }
-
-    // Focus first interactive element in form
-    const firstInput = form?.elements.namedItem("fullName");
-    if (firstInput) {
-      firstInput.focus();
-    }
-  }
-
-  function closeDialog() {
-    if (!dialog) return;
-    if (typeof dialog.close === "function") {
-      dialog.close();
-    } else {
-      dialog.removeAttribute("open");
-    }
-
-    if (lastActiveElement && typeof lastActiveElement.focus === "function") {
-      lastActiveElement.focus();
-    }
-  }
-
-  pilotTriggers.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      openDialog(btn);
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeDialog();
-    });
-  }
-
-  // Close on backdrop click (click outside dialog container)
-  if (dialog) {
-    dialog.addEventListener("click", (e) => {
-      const rect = dialog.getBoundingClientRect();
-      const isInDialog =
-        rect.top <= e.clientY &&
-        e.clientY <= rect.top + rect.height &&
-        rect.left <= e.clientX &&
-        e.clientX <= rect.left + rect.width;
-      if (!isInDialog) {
-        closeDialog();
-      }
-    });
-
-    dialog.addEventListener("cancel", (e) => {
-      e.preventDefault();
-      closeDialog();
-    });
-
-    // Trap focus inside dialog for full accessibility
-    dialog.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        e.preventDefault();
-        closeDialog();
-        return;
-      }
-
-      if (e.key === "Tab") {
-        const focusable = dialog.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-        );
-        if (focusable.length === 0) return;
-        const first = focusable[0];
-        const last = focusable[focusable.length - 1];
-
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault();
-          last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault();
-          first.focus();
-        }
-      }
-    });
-  }
-
-  // Clear custom validity when the visitor edits that input
   if (form) {
     const fields = [
       "fullName",
@@ -181,7 +90,9 @@ export function initApp() {
       const input = form.elements.namedItem(name);
       if (input) {
         input.addEventListener("input", () => {
-          input.setCustomValidity("");
+          if (typeof input.setCustomValidity === "function") {
+            input.setCustomValidity("");
+          }
           if (statusRegion && statusRegion.classList.contains("form-status--error")) {
             statusRegion.textContent = "";
             statusRegion.className = "form-status";
@@ -223,10 +134,10 @@ export function initApp() {
     });
   }
 
-  // Mobile Navigation
+  // Mobile Navigation Toggle
   const menuToggle = document.getElementById("mobile-menu-toggle");
   const navContainer = document.getElementById("primary-navigation");
-  const navLinks = navContainer ? navContainer.querySelectorAll("a") : [];
+  const navLinks = navContainer ? navContainer.querySelectorAll(".nav-link") : [];
 
   function openMobileMenu() {
     if (!menuToggle || !navContainer) return;
@@ -257,7 +168,7 @@ export function initApp() {
     });
   }
 
-  // Close mobile menu when any link is clicked
+  // Close mobile menu when any nav link is clicked
   navLinks.forEach((link) => {
     link.addEventListener("click", () => {
       if (navContainer && navContainer.classList.contains("nav-menu--open")) {
@@ -277,4 +188,44 @@ export function initApp() {
       if (menuToggle) menuToggle.focus();
     }
   });
+
+  // Highlight Current Navigation Link based on route
+  if (typeof window !== "undefined") {
+    const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href")?.replace(/\/$/, "") || "/";
+      if (href === currentPath) {
+        link.classList.add("nav-link--active");
+        link.setAttribute("aria-current", "page");
+      }
+    });
+  }
+
+  // Scroll Reveal Animations
+  if (typeof window !== "undefined" && "IntersectionObserver" in window) {
+    const revealElements = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "0px 0px -30px 0px"
+      }
+    );
+
+    revealElements.forEach((el) => {
+      observer.observe(el);
+    });
+  } else if (typeof document !== "undefined") {
+    // Fallback: reveal immediately if observer not supported
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      el.classList.add("is-revealed");
+    });
+  }
 }
