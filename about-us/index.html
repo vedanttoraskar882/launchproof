@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us — Founder & Background | LaunchProof</title>
-  <meta name="description" content="Learn about LaunchProof's background, founder Sharique Shahid, intended customers and focus categories for pre-launch product validation in the UK.">
+  <title>About Us — Founder, Vision & Roadmap | LaunchProof</title>
+  <meta name="description" content="Learn about LaunchProof's background, founder Sharique Shahid, business vision, indicative development roadmap and focus categories.">
   <link rel="icon" href="data:,">
   
   <!-- Typography: Google Fonts DM Sans & JetBrains Mono -->
@@ -25,16 +25,17 @@
         LaunchProof<span class="brand-dot" aria-hidden="true">.</span>
       </a>
 
-      <!-- Primary Navigation (Exactly 4 Links in Required Order) -->
+      <!-- Primary Navigation (Exactly 5 Links in Required Order) -->
       <nav id="primary-navigation" class="primary-navigation" aria-label="Main Navigation">
         <ul class="nav-list" role="list">
           <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/service" class="nav-link">Service</a></li>
-          <li><a href="/contact-us" class="nav-link">Contact Us</a></li>
+          <li><a href="/how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="/services" class="nav-link">Services</a></li>
           <li><a href="/about-us" class="nav-link nav-link--active" aria-current="page">About Us</a></li>
+          <li><a href="/contact-us" class="nav-link">Contact Us</a></li>
         </ul>
         <div class="header-actions">
-          <a href="/contact-us#pilot-form" class="btn btn-primary">Request a Pilot</a>
+          <a href="/contact-us#early-access" class="btn btn-primary">Join Early Access</a>
         </div>
       </nav>
 
@@ -59,10 +60,9 @@
   <main id="main-content" role="main">
 
     <!-- =======================================================================
-         ABOUT US SECTION
+         ABOUT US INTRODUCTION
          ======================================================================= -->
     <section class="section section-about-page">
-      <!-- Soft slowly drifting gradient behind introduction -->
       <div class="about-page-bg-anim" aria-hidden="true">
         <div class="about-page-drift-glow"></div>
       </div>
@@ -77,6 +77,21 @@
           </p>
         </div>
 
+        <!-- Business Vision Section -->
+        <div class="about-vision-section" data-reveal>
+          <h2 class="about-vision-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>Our Vision</span>
+          </h2>
+          <blockquote class="about-vision-quote">
+            “Our vision is to help physical-product founders make informed decisions before committing money to inventory by bringing demand, competition, pricing and supplier risk evidence into one structured validation process.”
+          </blockquote>
+        </div>
+
         <div class="about-grid">
           
           <!-- Main Content Column -->
@@ -85,7 +100,7 @@
             <div class="about-problem-block">
               <h2 class="about-block-title">The Commercial Problem</h2>
               <p class="about-text-lead">
-                A product can attract clicks and encouraging feedback while remaining too expensive to source, fulfil or advertise. LaunchProof is designed to bring customer evidence, pricing, supplier terms and acquisition costs into one Go, Revise or Stop recommendation. The founder makes the final decision.
+                A product can attract clicks and encouraging feedback while remaining too expensive to source, fulfil or advertise. LaunchProof is being developed to bring customer evidence, pricing, supplier terms and acquisition costs into one Go, Revise or Stop recommendation. The founder makes the final decision.
               </p>
             </div>
 
@@ -182,40 +197,71 @@
               </div>
             </div>
 
-            <!-- Call to Action linking to Contact Us -->
-            <div class="about-cta-block" data-reveal>
-              <h3 class="about-cta-title">Ready to validate your idea?</h3>
-              <p class="about-cta-text">
-                Speak directly with LaunchProof to schedule your 14-day pre-launch validation sprint.
-              </p>
-              <a href="/contact-us#pilot-form" class="btn btn-primary">
-                <span>Request a Pilot</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
+            <!-- Indicative Development Roadmap -->
+            <div class="roadmap-container" data-reveal>
+              <div class="roadmap-header">
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--color-navy-950); margin-bottom: 0.5rem;">
+                  Indicative development roadmap
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--color-navy-600);">
+                  Our planned development sequence as we build and refine LaunchProof with early-access founders.
+                </p>
+              </div>
+
+              <div class="roadmap-list">
+                <!-- Roadmap Item 1 -->
+                <div class="roadmap-item">
+                  <div class="roadmap-step-badge">1</div>
+                  <div class="roadmap-item-content">
+                    <h4 class="roadmap-item-title">Core platform development</h4>
+                    <p class="roadmap-item-desc">Architecting the analytical engine, data pipeline models and initial validation scoring infrastructure.</p>
+                  </div>
+                </div>
+
+                <!-- Roadmap Item 2 -->
+                <div class="roadmap-item">
+                  <div class="roadmap-step-badge">2</div>
+                  <div class="roadmap-item-content">
+                    <h4 class="roadmap-item-title">Early-access feedback and pilot preparation</h4>
+                    <p class="roadmap-item-desc">Working directly with early-access registrants to test usability, refine inputs and calibrate decision thresholds.</p>
+                  </div>
+                </div>
+
+                <!-- Roadmap Item 3 -->
+                <div class="roadmap-item">
+                  <div class="roadmap-step-badge">3</div>
+                  <div class="roadmap-item-content">
+                    <h4 class="roadmap-item-title">Pilot validation and refinement</h4>
+                    <p class="roadmap-item-desc">Running initial live demand test pilots in selected UK physical-product categories with founder-controlled ad accounts.</p>
+                  </div>
+                </div>
+
+                <!-- Roadmap Item 4 -->
+                <div class="roadmap-item">
+                  <div class="roadmap-step-badge">4</div>
+                  <div class="roadmap-item-content">
+                    <h4 class="roadmap-item-title">Planned outcome tracking and integration expansion</h4>
+                    <p class="roadmap-item-desc">Expanding long-term post-launch tracking with Shopify and Amazon integrations under Module 9 (Outcome Loop).</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
 
-          <!-- Executive Founder Profile (Solid Readable Surface) -->
-          <aside class="about-sidebar" aria-label="Founder Profile" data-reveal>
+          <!-- Founder Biography Sidebar Column -->
+          <aside class="about-sidebar" data-reveal>
             <div class="founder-card">
-              <div class="founder-card-header">
-                <div class="founder-identity">
-                  <h2 class="founder-name">Sharique Shahid</h2>
-                  <p class="founder-title">Founder and Managing Director</p>
+              <div class="founder-header">
+                <div class="founder-avatar" aria-hidden="true">
+                  <span>SS</span>
                 </div>
-                <div class="founder-emblem" aria-hidden="true">SS</div>
+                <div class="founder-titles">
+                  <h3 class="founder-name">Sharique Shahid</h3>
+                  <span class="founder-role">Founder and Managing Director</span>
+                </div>
               </div>
-              
-              <div class="founder-credentials-strip">
-                <span class="credential-tag">MBA Marketing</span>
-                <span class="credential-tag">B.Com Commerce</span>
-                <span class="credential-tag">MSc Stirling</span>
-              </div>
-              
+
               <p class="founder-bio">
                 Sharique holds an MBA in Marketing, a B.Com in Commerce and an MSc in International Business from the University of Stirling. His background includes two years and three months in manufacturing-sector marketing and research into online grocery purchasing behaviour. He leads product direction, the evidence standard, customer discovery, partnerships and go-to-market work.
               </p>
@@ -241,11 +287,11 @@
             <span class="section-eyebrow">Get Started</span>
             <h2 id="cta-heading" class="cta-title">Ready to validate your product idea?</h2>
             <p class="cta-desc">
-              Test your demand and supplier economics before committing to production. Register interest for an upcoming validation sprint.
+              LaunchProof is currently in development. Join early access to register your interest and receive development and pilot updates.
             </p>
             <div class="cta-actions">
-              <a href="/contact-us#pilot-form" class="btn btn-primary">
-                <span>Request a Pilot</span>
+              <a href="/contact-us#early-access" class="btn btn-primary">
+                <span>Join Early Access</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <line x1="5" y1="12" x2="19" y2="12"></line>
                   <polyline points="12 5 19 12 12 19"></polyline>
@@ -270,7 +316,7 @@
             LaunchProof<span class="brand-dot" aria-hidden="true">.</span>
           </a>
           <p class="footer-tagline">
-            Helping UK founders test demand, understand margins and decide whether to order stock.
+            Being developed to help UK physical-product founders test demand, understand margins and decide whether to order stock.
           </p>
         </div>
 
@@ -279,15 +325,16 @@
             <span class="footer-heading">Navigation</span>
             <ul class="footer-list" role="list">
               <li><a href="/" class="footer-link">Home</a></li>
-              <li><a href="/service" class="footer-link">Service</a></li>
-              <li><a href="/contact-us" class="footer-link">Contact Us</a></li>
+              <li><a href="/how-it-works" class="footer-link">How It Works</a></li>
+              <li><a href="/services" class="footer-link">Services</a></li>
               <li><a href="/about-us" class="footer-link">About Us</a></li>
+              <li><a href="/contact-us" class="footer-link">Contact Us</a></li>
             </ul>
           </div>
         </nav>
 
         <div class="footer-actions">
-          <a href="/contact-us#pilot-form" class="btn btn-primary">Request a Pilot</a>
+          <a href="/contact-us#early-access" class="btn btn-primary">Join Early Access</a>
         </div>
       </div>
 

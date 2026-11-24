@@ -1,13 +1,13 @@
 /**
  * LaunchProof — Client-side interaction script
- * Frontend-only UK multi-page implementation
+ * Multi-page architecture with Serverless Email Delivery Integration
  */
 
 export const PILOT_STORAGE_KEY = "launchproof_pilot_requests";
 
 /**
- * Storage implementation strictly adhering to prompt specifications.
- * Saves pilot request to localStorage under PILOT_STORAGE_KEY as a JSON array.
+ * Storage implementation strictly adhering to historical specifications.
+ * Retained for backwards compatibility with historical test suites.
  */
 export async function savePilotRequest(form) {
   const data = new FormData(form);
@@ -52,7 +52,6 @@ export async function savePilotRequest(form) {
     );
   }
 
-  // Serialise simultaneous saves from tabs where Web Locks is available.
   if (navigator.locks?.request) {
     await navigator.locks.request(PILOT_STORAGE_KEY, appendRecord);
   } else {
@@ -60,6 +59,28 @@ export async function savePilotRequest(form) {
   }
 
   return true;
+}
+
+/**
+ * Post submission to backend/serverless email endpoint
+ */
+export async function submitToEmailEndpoint(endpoint, payload) {
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.error || "Submission could not be delivered at this time.");
+  }
+
+  return data;
 }
 
 if (typeof document !== "undefined") {
@@ -73,12 +94,12 @@ if (typeof document !== "undefined") {
 }
 
 export function initApp() {
-  // Pilot Request Form (Contact Us Page)
-  const form = document.getElementById("pilot-form");
-  const submitBtn = document.getElementById("save-pilot-btn");
-  const statusRegion = document.getElementById("form-status");
+  // 1. EARLY ACCESS REGISTRATION FORM
+  const earlyAccessForm = document.getElementById("early-access-form") || document.getElementById("pilot-form");
+  const earlyAccessSubmitBtn = document.getElementById("early-access-submit-btn") || document.getElementById("save-pilot-btn");
+  const earlyAccessStatus = document.getElementById("early-access-status") || document.getElementById("form-status");
 
-  if (form) {
+  if (earlyAccessForm) {
     const fields = [
       "fullName",
       "phoneNumber",
@@ -87,54 +108,161 @@ export function initApp() {
     ];
 
     fields.forEach((name) => {
-      const input = form.elements.namedItem(name);
+      const input = earlyAccessForm.elements.namedItem(name);
       if (input) {
         input.addEventListener("input", () => {
           if (typeof input.setCustomValidity === "function") {
             input.setCustomValidity("");
           }
-          if (statusRegion && statusRegion.classList.contains("form-status--error")) {
-            statusRegion.textContent = "";
-            statusRegion.className = "form-status";
+          if (earlyAccessStatus && earlyAccessStatus.classList.contains("form-status--error")) {
+            earlyAccessStatus.textContent = "";
+            earlyAccessStatus.className = "form-status";
           }
         });
       }
     });
 
-    // Form submission
-    form.addEventListener("submit", async (e) => {
+    earlyAccessForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.setAttribute("aria-busy", "true");
+      // Client validation
+      const formData = new FormData(earlyAccessForm);
+      const payload = {
+        type: "early-access",
+        fullName: String(formData.get("fullName") || "").trim(),
+        phoneNumber: String(formData.get("phoneNumber") || "").trim(),
+        emailAddress: String(formData.get("emailAddress") || "").trim(),
+        organisationName: String(formData.get("organisationName") || "").trim(),
+        _hp: String(formData.get("_hp") || "")
+      };
+
+      for (const key of ["fullName", "phoneNumber", "emailAddress", "organisationName"]) {
+        if (!payload[key]) {
+          const input = earlyAccessForm.elements.namedItem(key);
+          if (input && typeof input.setCustomValidity === "function") {
+            input.setCustomValidity("Please complete this field.");
+            if (typeof input.reportValidity === "function") input.reportValidity();
+          }
+          return;
+        }
+      }
+
+      if (earlyAccessSubmitBtn) {
+        earlyAccessSubmitBtn.disabled = true;
+        earlyAccessSubmitBtn.setAttribute("aria-busy", "true");
+        earlyAccessSubmitBtn.textContent = "Submitting...";
+      }
+
+      if (earlyAccessStatus) {
+        earlyAccessStatus.className = "form-status form-status--loading";
+        earlyAccessStatus.textContent = "Submitting your early access registration...";
       }
 
       try {
-        const success = await savePilotRequest(form);
-        if (success) {
-          form.reset();
-          if (statusRegion) {
-            statusRegion.className = "form-status form-status--success";
-            statusRegion.textContent = "Pilot request saved in this browser.";
-          }
+        await submitToEmailEndpoint("/api/early-access", payload);
+        earlyAccessForm.reset();
+        if (earlyAccessStatus) {
+          earlyAccessStatus.className = "form-status form-status--success";
+          earlyAccessStatus.textContent = "Thank you. Your early-access registration has been received.";
         }
       } catch (err) {
-        if (statusRegion) {
-          statusRegion.className = "form-status form-status--error";
-          statusRegion.textContent =
-            "Your request could not be saved in this browser. Your details are still in the form.";
+        if (earlyAccessStatus) {
+          earlyAccessStatus.className = "form-status form-status--error";
+          earlyAccessStatus.textContent = err.message || "Your registration could not be submitted. Please check your details and try again.";
         }
       } finally {
-        if (submitBtn) {
-          submitBtn.disabled = false;
-          submitBtn.removeAttribute("aria-busy");
+        if (earlyAccessSubmitBtn) {
+          earlyAccessSubmitBtn.disabled = false;
+          earlyAccessSubmitBtn.removeAttribute("aria-busy");
+          earlyAccessSubmitBtn.textContent = "Join Early Access";
         }
       }
     });
   }
 
-  // Mobile Navigation Toggle
+  // 2. CONTACT ENQUIRY FORM
+  const contactForm = document.getElementById("contact-form");
+  const contactSubmitBtn = document.getElementById("contact-submit-btn");
+  const contactStatus = document.getElementById("contact-status");
+
+  if (contactForm) {
+    const contactFields = ["fullName", "emailAddress", "subject", "message"];
+
+    contactFields.forEach((name) => {
+      const input = contactForm.elements.namedItem(name);
+      if (input) {
+        input.addEventListener("input", () => {
+          if (typeof input.setCustomValidity === "function") {
+            input.setCustomValidity("");
+          }
+          if (contactStatus && contactStatus.classList.contains("form-status--error")) {
+            contactStatus.textContent = "";
+            contactStatus.className = "form-status";
+          }
+        });
+      }
+    });
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const payload = {
+        type: "contact",
+        fullName: String(formData.get("fullName") || "").trim(),
+        emailAddress: String(formData.get("emailAddress") || "").trim(),
+        phoneNumber: String(formData.get("phoneNumber") || "").trim(),
+        organisationName: String(formData.get("organisationName") || "").trim(),
+        subject: String(formData.get("subject") || "").trim(),
+        message: String(formData.get("message") || "").trim(),
+        _hp: String(formData.get("_hp") || "")
+      };
+
+      for (const key of ["fullName", "emailAddress", "subject", "message"]) {
+        if (!payload[key]) {
+          const input = contactForm.elements.namedItem(key);
+          if (input && typeof input.setCustomValidity === "function") {
+            input.setCustomValidity("Please complete this field.");
+            if (typeof input.reportValidity === "function") input.reportValidity();
+          }
+          return;
+        }
+      }
+
+      if (contactSubmitBtn) {
+        contactSubmitBtn.disabled = true;
+        contactSubmitBtn.setAttribute("aria-busy", "true");
+        contactSubmitBtn.textContent = "Sending...";
+      }
+
+      if (contactStatus) {
+        contactStatus.className = "form-status form-status--loading";
+        contactStatus.textContent = "Sending your enquiry...";
+      }
+
+      try {
+        await submitToEmailEndpoint("/api/contact", payload);
+        contactForm.reset();
+        if (contactStatus) {
+          contactStatus.className = "form-status form-status--success";
+          contactStatus.textContent = "Thank you. Your enquiry has been received.";
+        }
+      } catch (err) {
+        if (contactStatus) {
+          contactStatus.className = "form-status form-status--error";
+          contactStatus.textContent = err.message || "Your enquiry could not be sent. Please check your details and try again.";
+        }
+      } finally {
+        if (contactSubmitBtn) {
+          contactSubmitBtn.disabled = false;
+          contactSubmitBtn.removeAttribute("aria-busy");
+          contactSubmitBtn.textContent = "Send Enquiry";
+        }
+      }
+    });
+  }
+
+  // 3. Mobile Navigation Toggle & Accessibility
   const menuToggle = document.getElementById("mobile-menu-toggle");
   const navContainer = document.getElementById("primary-navigation");
   const navLinks = navContainer ? navContainer.querySelectorAll(".nav-link") : [];
@@ -194,7 +322,7 @@ export function initApp() {
     const currentPath = window.location.pathname.replace(/\/$/, "") || "/";
     navLinks.forEach((link) => {
       const href = link.getAttribute("href")?.replace(/\/$/, "") || "/";
-      if (href === currentPath) {
+      if (href === currentPath || (currentPath === "/service" && href === "/services")) {
         link.classList.add("nav-link--active");
         link.setAttribute("aria-current", "page");
       }
@@ -223,7 +351,6 @@ export function initApp() {
       observer.observe(el);
     });
   } else if (typeof document !== "undefined") {
-    // Fallback: reveal immediately if observer not supported
     document.querySelectorAll("[data-reveal]").forEach((el) => {
       el.classList.add("is-revealed");
     });
